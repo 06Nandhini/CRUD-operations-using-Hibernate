@@ -1,36 +1,85 @@
-# CRUD-operations-using-Hibernate
-Perform CRUD operation on Relation without writing query only by using the Hibernate. Its purely for learning purpose!
+# CRUD Operations Using Hibernate
 
-Let's start from the very scratch to do this
+Perform CRUD operations on relational databases **without writing SQL queries**, using Hibernate.  
+This project is **purely for learning purposes**.
 
-Step 1:
-  -Install Visual Studio Code
-  -Install JDK 21(Any version from JDK 17 is valid) 
-  **Important Note:
-    If you have already installed older version of java(since you might start learning JAVA earlier, after installing the JDK make sure Environment path variable is setted correctly)
-    **
-Step 2:
-  -Open the Command prompt
-  Making sure:
-    i) JDK installed correctly
-          javac --version //result : java 21.x.x
-Step 3:
-    Install maven - https://maven.apache.org/
-    Download Binary file not source file because here we are not going to build the maven just using maven
-    Set environment system variable as %MAVEN_HOME% and path location include bin folder.
-    Checking maven is installed correctly(close and reopen the command prompt)
-        mvn -version
-Step 4:
-    Now Create a project folder
-    Type command as:
-      mvn archetype:generate -DgroupId=com.example -DartifactId=HibernateDemo -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode = false
-    Result : BUILD SUCCESS
-Step 5:
-  Run the file in the order as
-      i) load the VSCode by performing above 4 steps
-      ii) po.xml
-      iii)hibernate.cfg.xml
-      iv) Main.java and Employee_Details
-      v) perform CRUD operation according to your wish
-Note:
-  while perform Create operation, if you are rerunning the program again and again, make sure to use different primary key.
+Let’s start from the very scratch.
+
+---
+
+## Prerequisites
+
+- Java JDK 17 or above (JDK 21 recommended)
+- Maven
+- MySQL
+- Visual Studio Code (or any IDE)
+
+---
+
+## Step 1: JDK Installation
+
+- Install **Visual Studio Code**
+- Install **JDK 21** (any version from JDK 17 is valid)
+
+**Important Note:**  
+If you have already installed an older version of Java (since you might have started learning Java earlier),  
+after installing the new JDK, make sure the **environment path variable** is set correctly.
+
+---
+
+## Step 2: Verify Installation
+
+- Open the **Command Prompt**
+- Make sure JDK is installed correctly:
+
+```bash
+javac --version
+```
+Expected result:
+java 21.x.x
+
+## Step 3: Install Maven
+Download Maven from: https://maven.apache.org/
+
+Download the Binary file, not the source file
+(we are using Maven, not building it)
+
+Set the environment variable MAVEN_HOME
+
+Add the bin folder to the PATH
+
+Verify installation (close and reopen command prompt):
+```bash
+mvn --version
+```
+## Step 4: Create a Project Folder
+Run the following command:
+If your are wrting the command in single line dont use '\'
+```bash
+mvn archetype:generate \
+-DgroupId=com.example \
+-DartifactId=HibernateDemo \
+-DarchetypeArtifactId=maven-archetype-quickstart \
+-DinteractiveMode=false
+```
+Result:
+
+BUILD SUCCESS
+## Step 5: Execution Order
+Run the files in the following order:
+
+- Open VS Code after completing the above steps
+
+- Configure pom.xml
+
+- Configure hibernate.cfg.xml
+
+- Run Main.java and Employee_Details
+
+- Perform CRUD operations as per your requirement
+
+```bash
+Note
+While performing the Create operation, if you are rerunning the program multiple times,
+make sure to use a different primary key to avoid conflicts.
+```
