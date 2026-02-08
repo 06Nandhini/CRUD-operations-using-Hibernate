@@ -1,0 +1,46 @@
+package com.example;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        Configuration config=new Configuration();
+        config.configure();
+        config.addAnnotatedClass(Employee_details.class);
+
+        SessionFactory factory=config.buildSessionFactory();
+        Session s=factory.openSession();
+        Transaction tx=s.beginTransaction();
+
+        Employee_details emp = s.get(Employee_details.class, 101);
+
+        tx.commit();
+        s.close();
+
+        // Used to UPDATE data
+
+        // Modify detached object
+        emp.setSalary(95000);
+
+        Session s2 = factory.openSession();
+        Transaction tx2 = s2.beginTransaction();
+
+        // merge() attaches detached object to session
+        // Hibernate checks primary key
+        // If record exists → UPDATE
+        // If record does not exist → INSERT
+        Employee_details mergedEmp = (Employee_details) s2.merge(emp);
+        tx2.commit();
+        s2.close();
+        factory.close();
+
+        // 1️⃣0️⃣ mergedEmp is now managed
+        System.out.println("Updated employee: " + mergedEmp);
+    }
+}
