@@ -1,0 +1,40 @@
+package com.example;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        Configuration config=new Configuration();
+        config.configure();
+        config.addAnnotatedClass(Employee_details.class);
+
+        SessionFactory factory=config.buildSessionFactory();
+        Session s=factory.openSession();
+        Transaction tx=s.beginTransaction();
+
+        // Fetch employee record using primary key
+        // get() method immediately hits the database
+        // This is EAGER fetching
+        Employee_details emp1= session.get(Employee_details.class, 101);
+
+      //lazy fetching
+      //`getReference()` returns a proxy and fetches data lazily
+        Employee_details emp2=s.byId(Employee_details.class).getReference(101);
+        tx.commit();
+        session.close();
+        factory.close();
+
+      
+        // Data is already available, no additional DB hit
+      System.out.println(emp1); //works perfectly
+
+      //But session is already closed
+      System.out.println(emp2); //LazyInitializationException
+    }
+}
