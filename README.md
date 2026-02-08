@@ -83,3 +83,7 @@ Note
 While performing the Create operation, if you are rerunning the program multiple times,
 make sure to use a different primary key to avoid conflicts.
 ```
+
+## File Directory
+<img width="364" height="629" alt="image" src="https://github.com/user-attachments/assets/9a6592fd-a986-4713-a7e4-8cf9f6904c29" />
+
